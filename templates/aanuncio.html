@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+
+<head>
+    <title> Bazaar - Edição de  {{titulo}}</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h4>Edição de {{titulo}}</h4>
+        </div>
+
+        <form action="/anuncio/editar/{{ anuncio.id }}" method="post">
+            <div class="form-group">
+                <p><label for="nome"> Username </label></p>
+                <p><input type="text" id="nome" name="nome" value="{{anuncio.nome}}"></p>
+            </div>
+
+            <div class="form-group">
+                <p><label for="desc"> Descrição </label></p>
+                <p><input type="text" id="desc" name="desc" value="{{anuncio.desc}}"></p>
+            </div>
+
+            <div class="form-group">
+                <p><label for="qtd"> Quantidade </label></p>
+                <p><input type="text" id="qtd" name="qtd" value="{{anuncio.qtd}}"></p>
+            </div>
+
+            <div class="form-group">
+                <p><label for="preco"> Preço </label></p>
+                <p><input type="text" id="preco" name="preco" value="{{anuncio.preco}}"></p>
+            </div>
+
+            <p><label for="cat">Categoria</label>
+                <select id="cat" name="cat">
+                    {% for categoria in categorias %} 
+                        <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+                    {% endfor %}
+                </select></p>
+
+                <p><label for="uso">Usuário</label>
+                    <select id="uso" name="uso">
+                        {% for usuario in usuarios %} 
+                            <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
+                        {% endfor %}
+                    </select></p>
+
+            <p><input type="submit" value="Alterar"></p>
+        </form>
+        <a href={{url_for("anuncio")}}>Cancelar</a>
+    </div>
+    
+</body>
+
+</html>

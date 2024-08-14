@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+
+<head>
+    <title> Bazaar - Comprar e vender - {{titulo}}</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h4>{{titulo}}</h4>
+        </div>
+
+        <form action="/pergunta/criar" method="post">
+            
+    
+            <div class="form-group">
+                <label for="desc">Descrição</label> <br/>
+                <textarea rows="4" cols="50" id="desc" name="desc"></textarea>   
+            </div>   
+
+            <div class="form-group">
+                <label for="resp">Resposta</label> <br/>
+                <textarea rows="4" cols="50" id="resp" name="resp"></textarea>   
+            </div>  
+
+            <p><label for="anc">Anúncio</label>
+            <select id="anc" name="anc"> <br/>
+                {% for anuncio in anuncios %} 
+                    <option value="{{ anuncio.id }}">{{ anuncio.nome }}</option>
+                {% endfor %}
+            </select></p>
+
+            <p><label for="uso">Usuário</label>
+            <select id="uso" name="uso"> <br/>
+                {% for usuario in usuarios %} 
+                    <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
+                {% endfor %}
+            </select></p>
+
+            
+
+            <button type="submit" class="btn btn-primary" > Cadastrar </button>
+            <button type="reset" class="btn btn-primary" > Limpar </button>
+        </form>
+    </div>
+    <br/>
+
+    <div class="container">
+        <div class="page-header">
+            <h4>Lista de {{titulo}}</h4>
+        </div>
+    
+    <table class="table table-striped table-responsive table-bordered">
+        <thead class="thread-default">
+            <tr>
+                <th>Descrição</th>
+                <th>Resposta</th>
+                <th>Categoria</th>
+                <th>Usuário</th>
+                <th>Editar</th>
+                <th>Deletar</th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for pergunta in perguntas %}
+            <tr>
+                <td>{{ pergunta.desc }}</td>
+                <td>{{ pergunta.resp }}</td>
+                <td>{{ pergunta.anc_id }}</td>
+                <td>{{ pergunta.usu_id }}</td>
+                <td><a href={{ url_for("editarpergunta",id=pergunta.id) }}>Editar</a></td>
+                <td><a href={{ url_for("deletarpergunta",id=pergunta.id) }}>Deletar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    
+
+    <div class="container"> 
+        <p><a href={{ url_for("index") }}>Voltar ao Menu Principal</a></p>
+    </div>
+        
+    
+</body>
+
+</html>

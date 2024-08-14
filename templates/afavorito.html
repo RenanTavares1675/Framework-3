@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+    <title> Bazaar - Edição de  {{titulo}}</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h4>Edição de {{titulo}}</h4>
+        </div>
+
+        <form action="/favorito/editar/{{ favorito.id }}" method="post">
+
+            <p><label for="anc">Anúncio</label>
+                <select id="anc" name="anc">
+                    {% for anuncio in anuncios %} 
+                        <option value="{{ anuncio.id }}">{{ anuncio.nome }}</option>
+                    {% endfor %}
+                </select></p>
+
+                <p><label for="uso">Usuário</label>
+                    <select id="uso" name="uso">
+                        {% for usuario in usuarios %} 
+                            <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
+                        {% endfor %}
+                    </select></p>
+
+            <p><input type="submit" value="Alterar"></p>
+        </form>
+        <a href={{url_for("favorito")}}>Cancelar</a>
+    </div>
+    
+</body>
+
+</html>

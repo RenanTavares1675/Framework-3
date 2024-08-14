@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    
+<head>
+    <title> Bazaar - {{username}}</title>
+</head>
+
+<body>
+    {% if username %}
+        <h1>Bem-vindo ao Bazaar, {{username}}</h1>
+
+    {% else %}
+        <h1>Bem-vindo ao Bazaar, Anônimo</h1>
+
+    {% endif %}
+
+    <h5> Nome do cookie {{cokusername}} </h5>
+</body>
+
+</html>

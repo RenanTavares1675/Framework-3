@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+    <title> Bazaar - Edição de  {{titulo}}</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+</head>
+
+<body>
+    
+    <div class="page-header">
+        <h4>Edição de {{titulo}}</h4>
+    </div>
+
+    <form action="/usuario/editar/{{ usuario.id }}" method="post">
+        <div class="form-group">
+            <label for="user"> Username </label>
+            <input type="text" id="user" name="user" value="{{usuario.nome}}">
+        </div>
+
+        <div class="form-group">
+            <label for="email"> E-mail </label>
+            <input type="text" id="email" name="email" value="{{usuario.email}}">
+        </div>
+
+        <div class="form-group">
+            <label for="senha"> Password </label>
+            <input type="text" id="senha" name="senha" value="{{usuario.senha}}">
+        </div>
+
+        <div class="form-group">
+            <label for="end"> Endereço </label>
+            <input type="text" id="end" name="end" value="{{usuario.end}}">
+        </div>
+
+        <button type="submit" class="btn btn-primary" > Alterar </button>
+    </form>
+   
+    <a href={{url_for("cadusuario")}}>Cancelar</a>
+
+    
+</body>
+
+</html>
